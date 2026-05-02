@@ -74,10 +74,10 @@ service cloud.firestore {
     }
 
     match /leads/{leadId} {
-      allow get: if isOwner(existing().userId) || isAdmin();
+      allow get: if isOwner(leadId) || isAdmin();
       allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
       allow create: if isEmailVerified() && isValidLead(incoming());
-      allow update: if (isOwner(existing().userId) && isValidLead(incoming())) || isAdmin();
+      allow update: if (isOwner(leadId) && isValidLead(incoming())) || isAdmin();
     }
 
     match /bookings/{bookingId} {

@@ -69,9 +69,10 @@ export async function processChatMessage(message: string, history: ChatMessage[]
     
     return parsed;
   } catch (error) {
-    console.error("Failed to parse chatbot response:", responseText);
+    console.error("Chatbot processing error:", error);
+    console.error("Model response text:", responseText);
     return {
-      message: responseText || "I'm having trouble processing that. Could you tell me your budget and preferred location?",
+      message: responseText || "I'm having trouble processing that right now. Could you tell me more about your requirements?",
       data: null,
       status: "unqualified"
     };
