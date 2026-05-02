@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "Property": {
+      "title": "Property",
+      "description": "A real estate property listing in Karachi",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "price": { "type": "number" },
+        "location": { "type": "string" },
+        "type": { "type": "string", "enum": ["house", "apartment", "plot"] },
+        "rooms": { "type": "number" },
+        "bathrooms": { "type": "number" },
+        "areaSize": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["available", "sold"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "price", "location", "type"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "A potential buyer interested in properties",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "budget": { "type": "number" },
+        "location": { "type": "string" },
+        "propertyType": { "type": "string" },
+        "status": { "type": "string", "enum": ["unqualified", "qualified", "serious"] },
+        "isSerious": { "type": "boolean" },
+        "lastInteraction": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "A scheduled visit for a property",
+      "type": "object",
+      "properties": {
+        "propertyId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userName": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/properties/{propertyId}": {
+      "schema": "Property",
+      "description": "Collection of Karachi property listings"
+    },
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of filtered sales leads"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Collection of visit bookings"
+    }
+  }
+}

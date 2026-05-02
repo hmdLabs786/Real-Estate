@@ -1,0 +1,10 @@
+{
+  "name": "Karachi Estates",
+  "description": "Real Estate Property Management System for Karachi with a smart AI chatbot to qualify leads, property recommendations, and visit booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "AI-Powered Lead Matching",
+    "Real Estate CRM",
+    "Karachi Market Insights"
+  ]
+}
