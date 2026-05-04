@@ -1,4 +1,4 @@
-import { chatWithGemini } from '../lib/gemini';
+import { chatWithAI } from '../lib/ai';
 import { LeadStatus } from '../types';
 import { createOrUpdateLead } from './leadService';
 
@@ -47,7 +47,7 @@ export async function processChatMessage(message: string, history: ChatMessage[]
     User: ${message}
   `;
   
-  const responseText = await chatWithGemini(prompt, CHATBOT_SYSTEM_INSTRUCTION);
+  const responseText = await chatWithAI(prompt, CHATBOT_SYSTEM_INSTRUCTION);
   
   try {
     // Attempt to parse JSON from response
